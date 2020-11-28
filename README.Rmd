@@ -25,7 +25,7 @@ The goal of Sales3Yrs is to ...
 You can install the released version of Sales3Yrs from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("Sales3Yrs")
+remotes::install_github("MrKevinNa/Sales3Yrs")
 ```
 
 ## Example
@@ -33,6 +33,7 @@ install.packages("Sales3Yrs")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-# library(Sales3Yrs)
-## basic example code
+library(Sales3Yrs)
+data(sales)
+draw_barplot(data = sales)
 ```

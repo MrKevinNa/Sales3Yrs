@@ -15,7 +15,7 @@ You can install the released version of Sales3Yrs from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("Sales3Yrs")
+remotes::install_github("MrKevinNa/Sales3Yrs")
 ```
 
 ## Example
@@ -23,6 +23,17 @@ install.packages("Sales3Yrs")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-# library(Sales3Yrs)
-## basic example code
+library(Sales3Yrs)
+data(sales)
+draw_barplot(data = sales)
 ```
+
+<!--html_preserve-->
+
+<div class="muted well" style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;">
+
+Shiny applications not supported in static R Markdown documents
+
+</div>
+
+<!--/html_preserve-->
