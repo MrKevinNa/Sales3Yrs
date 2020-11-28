@@ -18,3 +18,5 @@ Imports:
     stringr
 URL: https://github.com/MrKevinNa/Sales3Yrs
 BugReports: https://github.com/MrKevinNa/Sales3Yrs/issues
+Depends: 
+    R (>= 2.10)
