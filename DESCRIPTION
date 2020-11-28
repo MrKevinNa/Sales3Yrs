@@ -16,3 +16,5 @@ Imports:
     dplyr (>= 1.0.2),
     ggplot2,
     stringr
+URL: https://github.com/MrKevinNa/Sales3Yrs
+BugReports: https://github.com/MrKevinNa/Sales3Yrs/issues
