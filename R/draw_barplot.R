@@ -1,35 +1,45 @@
 
-draw_barplot <- function() {
+#' This function draws a barplot of sales volume for three years with data
+#'
+#' @export
+#' @param data A tibble object which has "name" & "value" columns
+#' @import shiny
+#' @import ggplot2
+#' @import dplyr
+#' @importFrom stringr str_glue
+#' @examples \dontrun{
+#' draw_barplot(sales)
+#' }
+
+draw_barplot <- function(data) {
   ui <- fluidPage(
-    shiny::sidebarPanel(
-      shiny::textInput(inputId = 'compName',
-                       label = '회사명을 입력하세요.',
-                       value = '삼성전자'),
-      shiny::submitButton(text = '제출',
-                          icon = icon(name = 'submit'))
+    sidebarPanel(
+      textInput(inputId = 'compName',
+                label = 'Input Company Name',
+                value = ''),
+      submitButton(text = 'Submit',
+                   icon = icon(name = 'submit'))
     ),
-    shiny::mainPanel(
-      shiny::plotOutput(outputId = 'barplot', width = '100%')
+    mainPanel(
+      plotOutput(outputId = 'barplot', width = '100%')
     )
   )
 
   server <- function(input, output, session) {
-    output$barplot <- shiny::renderPlot({
-      title <- stringr::str_glue('최근 3년간 {input$compName} 매출액')
-      df %>%
-        dplyr::filter(Company == input$compName) %>%
-        ggplot2::ggplot(mapping = ggplot2::aes(x = Year, y = Sales)) +
-        ggplot2::geom_col(fill = 'gray80') +
-        ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = 0.1)) +
-        ggplot2::geom_text(mapping = ggplot2::aes(label = Sales, vjust = -1)) +
-        ggplot2::ggtitle(label = title) +
-        ggplot2::theme_bw() +
-        ggplot2::theme(text = ggplot2::element_text(family = 'NanumGothic'),
-                       plot.title = ggplot2::element_text(hjust = 0.5,
-                                                          face = 'bold'))
+    output$barplot <- renderPlot({
+      # df <- data %>% filter(Company == input$compName)
+      df <- data[data$Company == input$compName, ]
+      ggplot(mapping = aes(x = df$Year, y = df$Sales)) +
+        geom_col(fill = 'gray80') +
+        scale_y_continuous(expand = expansion(mult = 0.1)) +
+        geom_text(mapping = aes(label = df$Sales, vjust = -1)) +
+        ggtitle(label = str_glue('Sales Volume of {input$compName}')) +
+        theme_bw() +
+        theme(text = element_text(family = 'NanumGothic'),
+              plot.title = element_text(hjust = 0.5, face = 'bold'))
     })
   }
 
-  shiny::shinyApp(ui = ui, server = server)
+  shinyApp(ui = ui, server = server)
 }
 

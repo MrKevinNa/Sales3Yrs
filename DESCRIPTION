@@ -14,8 +14,8 @@ Imports:
     tibble,
     shiny (>= 1.5.0),
     dplyr (>= 1.0.2),
-    ggplot2,
-    stringr
+    ggplot2 (>= 3.3.2),
+    stringr (>= 1.4.0)
 URL: https://github.com/MrKevinNa/Sales3Yrs
 BugReports: https://github.com/MrKevinNa/Sales3Yrs/issues
 Depends: 
