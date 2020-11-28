@@ -1,0 +1,18 @@
+Package: Sales3Yrs
+Type: Package
+Title: Barplot of Korean Company's Salse for three years
+Version: 0.1.0
+Author: DrKevin
+Maintainer: DrKevin <drkevin2022@gmail.com>
+Description: This package has a function for drawing barplot using ggplot2.
+License: CC BY 4.0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    tibble,
+    shiny (>= 1.5.0),
+    dplyr (>= 1.0.2),
+    ggplot2,
+    stringr
